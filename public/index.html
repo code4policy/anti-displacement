@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Demo Website</title>
+  </head>
+  <body>
+    <h1>Our Demonstration Website</h1>
+    <h2>Interactive Chart</h2>
+    <a href="our-team/index.html">Learn more about our team</a>
+  
+
+    <img 
+  id="chatIcon" 
+  src="ai_icon_2.png" 
+  alt="Chat Icon"
+  style="
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    z-index: 9999;
+
+    /* Make it circular */
+    border-radius: 50%;
+    object-fit: cover; 
+  "
+/>
+
+
+
+
+    
+	<div id="chatbotContainer" style="display: none; position: fixed; bottom: 140px; right: 20px; width: 400px; max-width: 90%; z-index: 9998;">
+
+    <script>
+    // Grab references to our icon and the chatbot container
+    const chatIcon = document.getElementById("chatIcon");
+    const chatbotContainer = document.getElementById("chatbotContainer");
+
+    chatIcon.addEventListener("click", () => {
+      // If container is hidden, show it; otherwise hide it
+      if (chatbotContainer.style.display === "none") {
+        chatbotContainer.style.display = "block";
+      } else {
+        chatbotContainer.style.display = "none";
+      }
+    });
+    </script>
+    
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" 
+        crossorigin="anonymous">
+
+  <!-- Optionally, create your own style overrides for .chat, .msg_card_body, etc. -->
+  <style>
+    /* Example minimal styling to ensure the chat card doesn't expand full screen. */
+    .chat {
+      max-height: 500px;
+      overflow: auto;
+    }
+    .card {
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+  </style>
+
+  <div class="container-fluid h-100" style="padding: 0; margin: 0;">
+    <div class="row justify-content-center h-100">
+      <div class="col-md-12 chat"> <!-- changed from col-md-8 col-xl-6 to col-md-12 -->
+        <div class="card">
+          <div class="card-header msg_head">
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="ai_icon.png"
+                     class="rounded-circle user_img"
+                     style="width: 50px; height: auto;">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info" style="padding-left: 10px;">
+                <span>The City of Boston</span>
+                <p>We are here to help you!</p>
+              </div>
+              <!-- Optionally add a "close" button in the header -->
+              <button id="closeChatbot" class="ml-auto btn btn-sm btn-outline-secondary">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+          <div id="messageFormeight" class="card-body msg_card_body"></div>
+          <div class="card-footer">
+            <form id="messageArea" class="input-group">
+              <input type="text" id="text" name="msg" placeholder="Type your message..." 
+                     autocomplete="off" class="form-control type_msg" required/>
+              <div class="input-group-append">
+                <button type="submit" id="send" class="input-group-text send_btn">
+                  <i class="fas fa-location-arrow"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dependencies: jQuery, underscore, backbone, marked -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.4.1/backbone-min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Insert your existing JS script from the chatbot -->
+  <script>
+    // ------------------------
+    //  Backbone Chat Logic
+    // ------------------------
+    var Message = Backbone.Model.extend({
+      defaults: {
+        text: '',
+        sender: 'user',
+        timestamp: ''
+      }
+    });
+
+    var Messages = Backbone.Collection.extend({
+      model: Message
+    });
+
+    var MessageView = Backbone.View.extend({
+      el: '#messageFormeight',
+      initialize: function() {
+        this.collection.on('add', this.render, this);
+      },
+      render: function(model) {
+        var str_time = model.get('timestamp');
+        var rawText = model.get('text');
+        var sender = model.get('sender');
+
+        var renderedHTML = (sender === 'bot') 
+            ? marked.parse(rawText)
+            : _.escape(rawText);
+
+        var userHtml = '';
+        if(sender === 'user') {
+          userHtml = `
+            <div class="d-flex justify-content-end mb-4">
+              <div class="msg_cotainer_send">
+                ${renderedHTML}
+                <span class="msg_time_send">${str_time}</span>
+              </div>
+              <div class="img_cont_msg">
+                <img src="https://i.ibb.co/xzFcJvX/Asset-1.png"
+                     class="rounded-circle user_img_msg"
+                     style="width: 20px; height: auto;">
+              </div>
+            </div>`;
+        } else {
+          userHtml = `
+            <div class="d-flex justify-content-start mb-4">
+              <div class="img_cont_msg">
+                <img src="ai_icon.png"
+                     class="rounded-circle user_img_msg"
+                     style="width: 20px; height: auto;">
+              </div>
+              <div class="msg_cotainer">
+                ${renderedHTML}
+                <span class="msg_time">${str_time}</span>
+              </div>
+            </div>`;
+        }
+
+        this.$el.append(userHtml);
+        return this;
+      }
+    });
+
+    var messages = new Messages();
+    var messageView = new MessageView({ collection: messages });
+
+    var globalThreadId = null;
+
+    $(document).ready(function() {
+      // On load, create a new thread
+      $.ajax({
+        url: '/thread',
+        type: 'GET',
+        success: function(data) {
+          globalThreadId = data.threadId; 
+          console.log("Thread created: " + globalThreadId);
+        },
+        error: function(err) {
+          console.error("Error creating thread:", err);
+        }
+      });
+
+      // Handle user message submit
+      $("#messageArea").on("submit", function(event) {
+        event.preventDefault();
+        var date = new Date();
+        var hour = String(date.getHours()).padStart(2, '0');
+        var minute = String(date.getMinutes()).padStart(2, '0');
+        var str_time = hour + ":" + minute;
+
+        var rawText = $("#text").val().trim();
+        if(!rawText) return;
+
+        messages.add(new Message({
+          text: rawText,
+          sender: 'user',
+          timestamp: str_time
+        }));
+
+        $("#text").val("");
+
+        // Send to server
+        $.ajax({
+          url: '/message',
+          type: 'POST',
+          data: {
+            threadId: globalThreadId,
+            message: rawText
+          },
+          success: function(serverData) {
+            if (serverData.messages) {
+              var latest = serverData.messages[serverData.messages.length - 1];
+              messages.add(new Message({
+                text: latest,
+                sender: 'bot',
+                timestamp: str_time
+              }));
+            } else {
+              console.error("Unexpected response:", serverData);
+            }
+          },
+          error: function(err) {
+            console.error("Error sending message:", err);
+          }
+        });
+      });
+
+      // Handle close button
+      $("#closeChatbot").on("click", function() {
+        $("#chatbotContainer").hide();
+      });
+    });
+  </script>
+
+  </body>
+  
+</html>
