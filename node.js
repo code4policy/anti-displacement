@@ -1,4 +1,6 @@
 require("dotenv").config();
+console.log(process.env.OPENAI_API_KEY);
+console.log(process.env.ASSISTANT_ID);
 const path = require('path');
 const express = require('express');
 const OpenAI = require('openai');
@@ -6,8 +8,12 @@ const OpenAI = require('openai');
 // const {OPENAI_API_KEY, ASSISTANT_ID } = process.env;
 
 // Hardcode your credentials here
-const OPENAI_API_KEY = "xxxx"; // put your actual key
-const ASSISTANT_ID   = "xxx"; // your assistant ID
+//const OPENAI_API_KEY = "xxxx"; // put your actual key
+//const ASSISTANT_ID   = "xxxx"; // your assistant ID
+
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const ASSISTANT_ID = process.env.ASSISTANT_ID;
+
 
 //const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 //const ASSISTANT_ID   = process.env.ASSISTANT_ID;
