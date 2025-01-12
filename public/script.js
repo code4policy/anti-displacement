@@ -139,6 +139,7 @@ function showHomeownerSection(section) {
     seniorSupport: `
       <h2>Senior Support</h2>
       <div class="links-container">
+      
       <a href="https://www.boston.gov/departments/neighborhood-development/boston-home-center/how-join-seniors-save-program" 
    class="resource-link" 
    target="_blank" 
@@ -146,8 +147,18 @@ function showHomeownerSection(section) {
    New Heating System
 </a>
 
-        <a href="#" class="resource-link">Senior Home Repair</a>
-        <a href="#" class="resource-link">Property Tax Work-Off</a>
+        <a href="https://www.boston.gov/departments/housing/how-apply-senior-home-repair" 
+   class="resource-link" 
+   target="_blank" 
+   rel="noopener noreferrer">
+   Senior Home Repair
+</a>
+        <a href="https://www.boston.gov/departments/age-strong-commission/senior-property-tax-work" 
+   class="resource-link" 
+   target="_blank" 
+   rel="noopener noreferrer">
+   Property Tax Work-Off
+</a>
       </div>
       ${renderBackButton()}
     `,
