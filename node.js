@@ -7,7 +7,7 @@ const OpenAI = require('openai');
 
 // Hardcode your credentials here
 const OPENAI_API_KEY = "xxxx"; // put your actual key
-const ASSISTANT_ID   = "xx"; // your assistant ID
+const ASSISTANT_ID   = "xxx"; // your assistant ID
 
 //const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 //const ASSISTANT_ID   = process.env.ASSISTANT_ID;
