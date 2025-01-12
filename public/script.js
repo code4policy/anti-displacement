@@ -139,7 +139,13 @@ function showHomeownerSection(section) {
     seniorSupport: `
       <h2>Senior Support</h2>
       <div class="links-container">
-        <a href="#" class="resource-link">New Heating System</a>
+      <a href="https://www.boston.gov/departments/neighborhood-development/boston-home-center/how-join-seniors-save-program" 
+   class="resource-link" 
+   target="_blank" 
+   rel="noopener noreferrer">
+   New Heating System
+</a>
+
         <a href="#" class="resource-link">Senior Home Repair</a>
         <a href="#" class="resource-link">Property Tax Work-Off</a>
       </div>
