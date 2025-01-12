@@ -208,4 +208,20 @@ h2 {
     color: #f8f8f8;
     transform: scale(1.05);
 }
+.feedback-form {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #0073e6;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
 
+/* 悬停效果 */
+.feedback-form:hover {
+    background-color: #005bb5;
+    color: #f8f8f8;
+    transform: scale(1.05);
