@@ -153,7 +153,12 @@ function showHomeownerSection(section) {
    rel="noopener noreferrer">
    Senior Home Repair
 </a>
-        <a href="#" class="resource-link">Property Tax Work-Off</a>
+        <a href="https://www.boston.gov/departments/age-strong-commission/senior-property-tax-work" 
+   class="resource-link" 
+   target="_blank" 
+   rel="noopener noreferrer">
+   Property Tax Work-Off
+</a>
       </div>
       ${renderBackButton()}
     `,
