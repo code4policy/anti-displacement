@@ -1,8 +1,9 @@
 // State management
 let currentState = {
   userType: null,
-  currentStep: 'initial',
-  previousSteps: []
+  openSection: null,
+  previousSteps: [],
+  currentStep: 'initial'
 };
 
 // DOM Elements
@@ -19,12 +20,50 @@ function showInitialScreen() {
   `;
 }
 
+// Toggle dropdown sections
+function toggleSection(section) {
+  if (!currentState.openSections) {
+    currentState.openSections = new Set();
+  }
+  
+  // Close all other sections when opening a new one
+  if (!currentState.openSections.has(section)) {
+    currentState.openSections.clear();
+    currentState.openSections.add(section);
+  } else {
+    currentState.openSections.delete(section);
+  }
+  updateView();
+}
+
+// Close specific section
+function closeSection(section) {
+  if (currentState.openSections && currentState.openSections.has(section)) {
+    currentState.openSections.delete(section);
+    updateView();
+  }
+}
+
+// Update view based on current state
+function updateView() {
+  if (currentState.userType === null) {
+    showInitialScreen();
+    return;
+  }
+
+  if (currentState.userType === 'renter') {
+    showRenterMainConcern();
+  } else {
+    showHomeownerMainConcern();
+  }
+}
+
 // User Type Selection
 function selectUserType(type) {
   currentState.userType = type;
   currentState.previousSteps.push('initial');
   currentState.currentStep = 'mainConcern';
-  showMainConcernScreen();
+  updateView();
 }
 
 // Main Concern Screens
@@ -40,12 +79,86 @@ function showMainConcernScreen() {
 function showRenterMainConcern() {
   flowContainer.innerHTML = `
     <h2>What's on your mind?</h2>
-    <div class="button-group">
-      <button onclick="showRenterSection('knowingRights')">Knowing My Rights</button>
-      <button onclick="showRenterSection('stoppingEviction')">Stopping Eviction</button>
-      <button onclick="showRenterSection('findingPlace')">Finding a Place to Live</button>
-      <button onclick="showRenterSection('buyingHome')">Buying a Home</button>
-      <button onclick="showRenterSection('needingMoney')">Needing More $</button>
+    <div class="dropdown-container">
+      <div class="dropdown-section">
+        <div class="dropdown-header">
+          <button class="dropdown-toggle" onclick="toggleSection('knowingRights')">
+            Knowing My Rights
+            <span class="arrow">▼</span>
+          </button>
+          <span class="close-arrow" onclick="closeSection('knowingRights')">×</span>
+        </div>
+        <div class="dropdown-content ${currentState.openSections && currentState.openSections.has('knowingRights') ? 'open' : ''}">
+          <div class="links-container">
+            <a href="#" class="resource-link">Know Your Rights</a>
+            <a href="#" class="resource-link">Free Legal Clinics</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-section">
+        <div class="dropdown-header">
+          <button class="dropdown-toggle" onclick="toggleSection('stoppingEviction')">
+            Stopping Eviction
+            <span class="arrow">▼</span>
+          </button>
+          <span class="close-arrow" onclick="closeSection('stoppingEviction')">×</span>
+        </div>
+        <div class="dropdown-content ${currentState.openSections && currentState.openSections.has('stoppingEviction') ? 'open' : ''}">
+          <div class="links-container">
+            <a href="#" class="resource-link">Help for Tenants Facing Eviction</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-section">
+        <div class="dropdown-header">
+          <button class="dropdown-toggle" onclick="toggleSection('findingPlace')">
+            Finding a Place to Live
+            <span class="arrow">▼</span>
+          </button>
+          <span class="close-arrow" onclick="closeSection('findingPlace')">×</span>
+        </div>
+        <div class="dropdown-content ${currentState.openSections && currentState.openSections.has('findingPlace') ? 'open' : ''}">
+          <div class="links-container">
+            <a href="#" class="resource-link" onclick="showHousingOption('emergencyShelter')">Emergency Shelter</a>
+            <a href="#" class="resource-link" onclick="showHousingOption('findingRent')">Finding a Place to Rent</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-section">
+        <div class="dropdown-header">
+          <button class="dropdown-toggle" onclick="toggleSection('buyingHome')">
+            Buying a Home
+            <span class="arrow">▼</span>
+          </button>
+          <span class="close-arrow" onclick="closeSection('buyingHome')">×</span>
+        </div>
+        <div class="dropdown-content ${currentState.openSections && currentState.openSections.has('buyingHome') ? 'open' : ''}">
+          <div class="links-container">
+            <a href="#" class="resource-link" onclick="showFinancialSupport(true)">Yes, I need financial support</a>
+            <a href="#" class="resource-link" onclick="showFinancialSupport(false)">No, I don't need financial support</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-section">
+        <div class="dropdown-header">
+          <button class="dropdown-toggle" onclick="toggleSection('needingMoney')">
+            Needing More $
+            <span class="arrow">▼</span>
+          </button>
+          <span class="close-arrow" onclick="closeSection('needingMoney')">×</span>
+        </div>
+        <div class="dropdown-content ${currentState.openSections && currentState.openSections.has('needingMoney') ? 'open' : ''}">
+          <div class="links-container">
+            <a href="#" class="resource-link">Job Training</a>
+            <a href="#" class="resource-link">1-on-1 Financial Coaching</a>
+            <a href="#" class="resource-link">Financial Workshops</a>
+          </div>
+        </div>
+      </div>
     </div>
     ${renderBackButton()}
   `;
@@ -73,17 +186,17 @@ function showRenterSection(section) {
     `,
     findingPlace: `
       <h2>Finding a Place to Live</h2>
-      <div class="button-group">
-        <button onclick="showHousingOption('emergencyShelter')">Emergency Shelter</button>
-        <button onclick="showHousingOption('findingRent')">Finding a Place to Rent</button>
+      <div class="links-container">
+        <a href="#" class="resource-link" onclick="showHousingOption('emergencyShelter')">Emergency Shelter</a>
+        <a href="#" class="resource-link" onclick="showHousingOption('findingRent')">Finding a Place to Rent</a>
       </div>
       ${renderBackButton()}
     `,
     buyingHome: `
       <h2>Buying a Home</h2>
-      <div class="button-group">
-        <button onclick="showFinancialSupport(true)">Yes, I need financial support</button>
-        <button onclick="showFinancialSupport(false)">No, I don't need financial support</button>
+      <div class="links-container">
+        <a href="#" class="resource-link" onclick="showFinancialSupport(true)">Yes, I need financial support</a>
+        <a href="#" class="resource-link" onclick="showFinancialSupport(false)">No, I don't need financial support</a>
       </div>
       ${renderBackButton()}
     `,
@@ -105,11 +218,72 @@ function showRenterSection(section) {
 function showHomeownerMainConcern() {
   flowContainer.innerHTML = `
     <h2>What's on your mind?</h2>
-    <div class="button-group">
-      <button onclick="showHomeownerSection('homeImprovement')">Home Improvement</button>
-      <button onclick="showHomeownerSection('stoppingForeclosure')">Stopping a Foreclosure</button>
-      <button onclick="showHomeownerSection('seniorSupport')">I'm a Senior and Need Support</button>
-      <button onclick="showHomeownerSection('needingMoney')">Needing More $</button>
+    <div class="dropdown-container">
+      <div class="dropdown-section">
+        <div class="dropdown-header">
+          <button class="dropdown-toggle" onclick="toggleSection('homeImprovement')">
+            Home Improvement
+            <span class="arrow">▼</span>
+          </button>
+          <span class="close-arrow" onclick="closeSection('homeImprovement')">×</span>
+        </div>
+        <div class="dropdown-content ${currentState.openSections && currentState.openSections.has('homeImprovement') ? 'open' : ''}">
+          <div class="links-container">
+            <a href="#" class="resource-link">Home Repair Loans</a>
+            <a href="#" class="resource-link">Additional Dwelling Unit</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-section">
+        <div class="dropdown-header">
+          <button class="dropdown-toggle" onclick="toggleSection('stoppingForeclosure')">
+            Stopping a Foreclosure
+            <span class="arrow">▼</span>
+          </button>
+          <span class="close-arrow" onclick="closeSection('stoppingForeclosure')">×</span>
+        </div>
+        <div class="dropdown-content ${currentState.openSections && currentState.openSections.has('stoppingForeclosure') ? 'open' : ''}">
+          <div class="links-container">
+            <a href="#" class="resource-link">Foreclosure Prevention</a>
+            <a href="#" class="resource-link">Hardship Tax Exemption</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-section">
+        <div class="dropdown-header">
+          <button class="dropdown-toggle" onclick="toggleSection('seniorSupport')">
+            I'm a Senior and Need Support
+            <span class="arrow">▼</span>
+          </button>
+          <span class="close-arrow" onclick="closeSection('seniorSupport')">×</span>
+        </div>
+        <div class="dropdown-content ${currentState.openSections && currentState.openSections.has('seniorSupport') ? 'open' : ''}">
+          <div class="links-container">
+            <a href="#" class="resource-link">New Heating System</a>
+            <a href="#" class="resource-link">Senior Home Repair</a>
+            <a href="#" class="resource-link">Property Tax Work-Off</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="dropdown-section">
+        <div class="dropdown-header">
+          <button class="dropdown-toggle" onclick="toggleSection('needingMoney')">
+            Needing More $
+            <span class="arrow">▼</span>
+          </button>
+          <span class="close-arrow" onclick="closeSection('needingMoney')">×</span>
+        </div>
+        <div class="dropdown-content ${currentState.openSection === 'needingMoney' ? 'open' : ''}">
+          <div class="links-container">
+            <a href="#" class="resource-link">Job Training</a>
+            <a href="#" class="resource-link">1-on-1 Financial Coaching</a>
+            <a href="#" class="resource-link">Financial Workshops</a>
+          </div>
+        </div>
+      </div>
     </div>
     ${renderBackButton()}
   `;
@@ -139,26 +313,9 @@ function showHomeownerSection(section) {
     seniorSupport: `
       <h2>Senior Support</h2>
       <div class="links-container">
-      
-      <a href="https://www.boston.gov/departments/neighborhood-development/boston-home-center/how-join-seniors-save-program" 
-   class="resource-link" 
-   target="_blank" 
-   rel="noopener noreferrer">
-   New Heating System
-</a>
-
-        <a href="https://www.boston.gov/departments/housing/how-apply-senior-home-repair" 
-   class="resource-link" 
-   target="_blank" 
-   rel="noopener noreferrer">
-   Senior Home Repair
-</a>
-        <a href="https://www.boston.gov/departments/age-strong-commission/senior-property-tax-work" 
-   class="resource-link" 
-   target="_blank" 
-   rel="noopener noreferrer">
-   Property Tax Work-Off
-</a>
+        <a href="#" class="resource-link">New Heating System</a>
+        <a href="#" class="resource-link">Senior Home Repair</a>
+        <a href="#" class="resource-link">Property Tax Work-Off</a>
       </div>
       ${renderBackButton()}
     `,
