@@ -277,44 +277,24 @@ h2 {
     background-color: #f0f0f0; /* 可选：背景颜色 */
 }
 
-/* 链接样式 */
-.meet-the-team {
-    display: inline-block;
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffffff;
-    text-decoration: none;
-    background-color: #0073e6;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+.meet-the-team, .feedback-form {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--white) !important; /* Force text color to white */
+  text-decoration: none;
+  background-color: var(--secondary-blue) !important; /* Force button background color */
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-/* 悬停效果 */
-.meet-the-team:hover {
-    background-color: #005bb5;
-    color: #f8f8f8;
-    transform: scale(1.05);
+/* Hover effect */
+.meet-the-team:hover, .feedback-form:hover {
+  background-color: var(--accent-blue) !important; /* Force hover background color */
+  color: var(--white) !important; /* Force hover text color to white */
+  transform: scale(1.05);
 }
-.feedback-form {
-    display: inline-block;
-    font-size: 18px;
-    font-weight: bold;
-    color: #ffffff;
-    text-decoration: none;
-    background-color: #0073e6;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-/* 悬停效果 */
-.feedback-form:hover {
-    background-color: #005bb5;
-    color: #f8f8f8;
-    transform: scale(1.05);
-
-
 /* General Header Container */
 .header-container {
   display: flex;
