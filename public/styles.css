@@ -412,4 +412,41 @@ h2 {
   width: 50%;
   height: auto;
 }
+.centered-header 
+ { text-align: center; }
 
+.section-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.text-content {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.image-links {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start; /* Align items to the top for consistency */
+}
+
+.image-link {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-link img {
+    width: 150px; /* Set fixed size for consistency */
+    height: 150px; /* Set fixed size for square appearance */
+    object-fit: cover; /* Adjust image to cover area without distortion */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
