@@ -405,16 +405,6 @@ h2 {
 .search-button:hover {
   background-color: #005bb5;
 }
-.header-BOS-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  height: auto;
-}
-.centered-header 
- { text-align: center; }
-
 .section-content {
     display: flex;
     justify-content: space-between;
@@ -422,17 +412,48 @@ h2 {
     margin: 20px;
 }
 
-.text-content {
+.left-content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     margin-right: 20px;
 }
 
-.image-links {
+.centered-header {
+    text-align: left; /* Align header to the left to match text-content */
+    margin-bottom: 75px;
+    font-family: 'Montserrat', sans-serif;
+    color: #091f2f;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 60px;
+}
+
+.text-content {
+    font-size: 22px;
+    color: #091f2f;
+    font-family: Lora, serif;
+    font-style: italic;
+    
+}
+.right-content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center images horizontally */
+}
+
+.header-BOS-image {
+    width: 550px; /* Adjust the size as needed */
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.image-links {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-items: flex-start; /* Align items to the top for consistency */
+    align-items: flex-start;
 }
 
 .image-link {
@@ -444,9 +465,10 @@ h2 {
 }
 
 .image-link img {
-    width: 150px; /* Set fixed size for consistency */
-    height: 150px; /* Set fixed size for square appearance */
-    object-fit: cover; /* Adjust image to cover area without distortion */
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
     border: 1px solid #ccc;
     border-radius: 8px;
     cursor: pointer;
+}
