@@ -106,6 +106,7 @@ const homeownerData = [
   }
 ];
 
+
 // Accordion Functions
 function populateAccordion(container, data) {
   container.innerHTML = data.map(category => `
