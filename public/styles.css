@@ -171,6 +171,7 @@ a.hover-bold:hover {
   .role-btn {
     width: 100%;
   }
+
 .section-content {
     display: flex;
     justify-content: flex-start; /* Adjust alignment */
@@ -217,32 +218,6 @@ a.hover-bold:hover {
     margin-top: 150px;
 }
 
-.image-links {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    margin-top: 20px;
-}
-
-.image-link {
-    text-align: center;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px; /* Add margin to space out from other content */
-}
-
-.image-link img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
 #city-strategy {
   background-color: var(--text-light);
   border: 1px solid var(--border-blue);
@@ -252,58 +227,72 @@ a.hover-bold:hover {
   box-shadow: 0 4px 12px var(--shadow-light);
 }
 
+.strategy-content {
+  display: flex;
+  justify-content: space-between; /* Space between text-section and image */
+  align-items: center; /* Center align vertically */
+  font-size: 50px;
+  color: #091f2f;
+  font-family: Lora, serif;
+}
+
+.text-container {
+  flex: 1.5; /* Allow more space for the text */
+  padding-right: 20px; /* Space between text and image */
+  display: flex;
+  flex-direction: column; /* Stack title and text vertically */
+}
+
 #city-strategy h2 {
-  font-size: 28px;
+  font-size: 50px;
   font-weight: bold;
   color: var(--primary-blue);
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left; /* Align title to the left */
   font-family: 'Montserrat', sans-serif;
   text-transform: uppercase;
 }
 
-.strategy-content p {
-  font-size: 18px;
+.strategy-text p {
+  font-size: 25px;
   line-height: 1.8;
   color: #091f2f;
   font-family: Lora, serif;
   margin-bottom: 20px;
 }
 
-.strategy-content ul {
+.strategy-text ul {
   list-style-type: none;
   padding: 0;
-  margin: 20px 0;
-  font-family: Lora, serif;
   margin-bottom: 20px;
+  font-family: Lora, serif;
+  font-size: 18px;
 }
 
-.strategy-content ul li {
-  font-size: 18px;
+.strategy-text ul li {
+  font-size: 20px;
   line-height: 1.8;
+  color: var(--text-dark);
   margin: 10px 0;
   padding-left: 25px;
   position: relative;
-  color: var(--text-dark);
-  font-family: Lora, serif;
-  margin-bottom: 20px;
 }
 
-.strategy-content ul li::before {
+.strategy-text ul li::before {
   content: '•';
   color: var(--primary-blue);
   font-size: 20px;
   position: absolute;
   left: 0;
   top: 5px;
-  font-family: Lora, serif;
-  margin-bottom: 20px;
 }
 
 .strategy-image {
+  width: 100px; /* Set the width as required */
+  flex: 0.7; /* Allocates space equally for smaller images */
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  align-items: center; /* Center image vertically */
 }
 
 .strategy-image img {
@@ -311,6 +300,30 @@ a.hover-bold:hover {
   height: auto;
   border-radius: 8px;
   border: 1px solid var(--border-blue);
+}
+
+.report-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.image-link {
+  text-align: center;
+  margin: 10px;
+  flex: 0 1 45%;
+}
+
+.image-link img {
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .meet-the-team {
