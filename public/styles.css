@@ -300,11 +300,12 @@ a.hover-bold:hover {
   border-radius: 8px;
   border: 1px solid var(--border-blue);
 }
+
 .meet-the-team {
     display: inline-block;
     font-size: 18px;
     font-weight: bold;
-    color: #f8f8f8;
+    color: white !important;
     background-color: #0073e6;
     padding: 10px 20px;
     border-radius: 8px;
@@ -313,22 +314,23 @@ a.hover-bold:hover {
 /* 悬停效果 */
 .meet-the-team:hover {
     background-color: #005bb5;
-    color: #f8f8f8;
+    color: white;
     transform: scale(1.05);
 }
 .feedback-form {
     display: inline-block;
     font-size: 18px;
     font-weight: bold;
-    color: #f8f8f8;
+    color: white !important;
     background-color: #0073e6;
     padding: 10px 20px;
     border-radius: 8px;
     transition: all 0.3s ease;
+    margin-bottom: 20px;
 }
 /* 悬停效果 */
 .feedback-form:hover {
     background-color: #005bb5;
-    color: #f8f8f8;
+    color: white;
     transform: scale(1.05);
 }
