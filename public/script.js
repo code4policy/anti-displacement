@@ -93,6 +93,16 @@ const homeownerData = [
       '<a href="https://www.boston.gov/departments/housing/how-apply-senior-home-repair" class="hover-bold">Senior Home Repair</a>: The Boston Home Center works with several neighborhood agencies that will assist you with applying for minor to larger repairs for your home.',
       '<a href="https://www.boston.gov/departments/age-strong-commission/senior-property-tax-work" class="hover-bold">Property Tax Work Off</a>: Qualified homeowners can work-off up to $2,000 on their property tax bill by offering volunteer services to the City of Boston'
     ]
+  },
+  {
+    title: 'Needing More Money',
+    items: [
+      '<strong>Job Training & Career Services</strong>',
+      '- <a href="https://www.boston.gov/departments/workforce-development/city-academy" class="hover-bold">City Academy</a>: The training pipeline for Boston residents which provides access to entry-level City positions.',
+      '- <a href="https://www.boston.gov/departments/workforce-development/powercorpsbos" class="hover-bold">PowerCorps BOS</a>: Training Boston\'s young adults for jobs in the green industry.',
+      '- <a href="https://www.boston.gov/departments/workforce-development/greater-boston-equitable-apprenticeship-pathways" class="hover-bold">Greater Boston Equitable Apprenticeship Pathways</a>: Connecting residents to apprenticeship opportunities.',
+      '- <a href="https://www.boston.gov/departments/workforce-development/good-jobs-metro-boston-coalition" class="hover-bold">Good Jobs Metro Boston Coalition</a>: Connecting residents to quality, good-paying job opportunities in child care, clean energy, and healthcare.'
+    ]
   }
 ];
 
