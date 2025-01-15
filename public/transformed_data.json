@@ -1,0 +1,159 @@
+[
+    {
+        "Category-1": "Renter",
+        "Category-2": "Knowing My Rights",
+        "Category-3": "Know Your Rights",
+        "link": "https://www.boston.gov/departments/housing/top-ten-things-tenants-and-landlords-need-know"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Knowing My Rights",
+        "Category-3": "Free Legal Clinics",
+        "link": "https://www.boston.gov/calendar/office-housing-stability-virtual-legal-clinic"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Stopping Eviction",
+        "Category-3": "Help For Tenants Facing Eviction:",
+        "link": "https://www.boston.gov/departments/housing/office-housing-stability/help-tenants-facing-eviction"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Finding an Immediate Place to Live",
+        "Category-3": "Emergency Shelter and Services",
+        "link": "https://search.boston.gov/departments/housing/services-those-experiencing-homeless"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Finding a Place to Rent",
+        "Category-3": "Metrolist",
+        "link": "https://www.boston.gov/metrolist"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Finding a Place to Rent",
+        "Category-3": "Housing Navigator MA",
+        "link": "https://housingnavigatorma.org/"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Finding a Place to Rent",
+        "Category-3": "CHAMP",
+        "link": "https://publichousingapplication.ocd.state.ma.us/"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Buying a Home",
+        "Category-3": "One+ Boston (Need Financial Support_",
+        "link": "https://www.boston.gov/departments/housing/boston-home-center/one-boston-homebuyer-program"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Buying a Home",
+        "Category-3": "STASH First-Gen Home (Need Financial Support)",
+        "link": "https://mahahome.org/STASH"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Buying a Home",
+        "Category-3": "BHA First Home (Need Financial Support)",
+        "link": "https://www.bostonhousing.org/en/For-Section-8-Leased-Housing/Resident-Information/BHA-First-Home-Program.aspx"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Buying a Home",
+        "Category-3": "First Time Homebuyer Program (Do not need Financial Support)",
+        "link": "https://www.boston.gov/departments/housing/first-time-homebuyer-program"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Buying a Home",
+        "Category-3": "Homebuyer 101 (Do not need Financial Support)",
+        "link": "https://www.boston.gov/departments/housing/boston-home-center/boston-home-center-classes"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Buying a Home",
+        "Category-3": "Credit Booster Program (Do not need Financial Support)",
+        "link": "https://www.urbanedge.org/program/credit-counseling-boot-camp/"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Needing More Money",
+        "Category-3": "City Academy",
+        "link": "https://www.boston.gov/departments/workforce-development/city-academy"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Needing More Money",
+        "Category-3": "PowerCorps BOS",
+        "link": "https://www.boston.gov/departments/workforce-development/powercorpsbos"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Needing More Money",
+        "Category-3": "Greater Boston Equitable Apprenticeship Pathways",
+        "link": "https://www.boston.gov/departments/workforce-development/greater-boston-equitable-apprenticeship-pathways"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Needing More Money",
+        "Category-3": "Good Jobs Metro Boston Coalition",
+        "link": "https://www.boston.gov/departments/workforce-development/good-jobs-metro-boston-coalition"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Financial Education to Support Wealth-building",
+        "Category-3": "1 on 1 Financial Coaching",
+        "link": "https://www.boston.gov/departments/center-working-families/roxbury-center-financial-empowerment/financial-coaching"
+    },
+    {
+        "Category-1": "Renter",
+        "Category-2": "Financial Education to Support Wealth-building",
+        "Category-3": "Financial Workshops",
+        "Category-4": "The Center for Working Families offers free workshops every month on topics important to financial well-being and growth.",
+        "link": "https://www.boston.gov/departments/center-working-families/roxbury-center-financial-empowerment/roxbury-center-financial-workshops"
+    },
+    {
+        "Category-1": "Homeowner",
+        "Category-2": "Home Improvement",
+        "Category-3": "Home Repair Loan Programs",
+        "link": "https://www.boston.gov/departments/housing/boston-home-center/quick-guide-home-repair-programs"
+    },
+    {
+        "Category-1": "Homeowner",
+        "Category-2": "Home Improvement",
+        "Category-3": "Accessory Dwelling Units (ADU)",
+        "link": "https://www.boston.gov/departments/housing/accessory-dwelling-units-adus-boston"
+    },
+    {
+        "Category-1": "Homeowner",
+        "Category-2": "Stopping a Foreclosure",
+        "Category-3": "Foreclosure Prevention",
+        "link": "https://www.boston.gov/housing/foreclosure-prevention-and-intervention"
+    },
+    {
+        "Category-1": "Homeowner",
+        "Category-2": "Stopping a Foreclosure",
+        "Category-3": "Hardship Tax Exemption",
+        "link": "https://www.boston.gov/departments/assessing/hardship-exemption-clause-18"
+    },
+    {
+        "Category-1": "Homeowner",
+        "Category-2": "I'm a Senior and Need Support",
+        "Category-3": "New Heating System",
+        "link": "https://www.boston.gov/departments/neighborhood-development/boston-home-center/how-join-seniors-save-program"
+    },
+    {
+        "Category-1": "Homeowner",
+        "Category-2": "I'm a Senior and Need Support",
+        "Category-3": "Senior Home Repair",
+        "link": "https://www.boston.gov/departments/housing/how-apply-senior-home-repair"
+    },
+    {
+        "Category-1": "Homeowner",
+        "Category-2": "I'm a Senior and Need Support",
+        "Category-3": "Property Tax Work Off",
+        "link": "https://www.boston.gov/departments/age-strong-commission/senior-property-tax-work"
+    }
+]

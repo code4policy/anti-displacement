@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Icicle Chart</title>
+    <script src="https://cdn.plot.ly/plotly-2.20.0.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div id="icicle-container" style="width: 100%; height: 700px;"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            d3.json("transformed_data.json").then(function (data) {
+                const labels = [];
+                const parents = [];
+                const values = [];
+                const descriptions = [];
+
+                data.forEach(row => {
+                    const category1 = row['Category-1'];
+                    const category2 = row['Category-2'];
+                    const category3 = row['Category-3'];
+                    const link = row['link'];
+
+                    function addNode(label, parent, value, description) {
+                        if (!labels.includes(label)) {
+                            labels.push(label);
+                            parents.push(parent || "");
+                            values.push(value || 0);
+                            descriptions.push(description || "");
+                        }
+                    }
+
+                    // Process up to Category-3
+                    addNode(category1, "", 0, "");
+                    if (category2) addNode(category2, category1, 0, "");
+                    if (category3) {
+                        let desc = category3;
+                        if (link) {
+                            desc = `<a href="${link}" target="_blank">${category3}</a>`;
+                        }
+                        addNode(category3, category2, 1, desc);
+                    }
+                });
+
+                // Plot the Icicle chart
+                const plotData = [{
+                    type: "icicle",
+                    labels: labels,
+                    parents: parents,
+                    values: values,
+                    textinfo: "label",
+                    text: descriptions,
+                    hoverinfo: "text",
+                    pathbar: { visible: true },
+                }];
+
+                const layout = {
+                    margin: { t: 50, l: 25, r: 25, b: 25 },
+                    font: { size: 25 } // Adjust font size for visibility
+                };
+
+                Plotly.newPlot("icicle-container", plotData, layout);
+            }).catch(function (error) {
+                console.error("Error loading the JSON file:", error);
+            });
+        });
+    </script>
+</body>
+</html>
