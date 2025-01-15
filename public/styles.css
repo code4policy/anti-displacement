@@ -261,4 +261,9 @@ a.hover-bold:hover {
   margin-top: 20px; /* Adds space between the button and the content above */
 }
 
+#icicle-container{
+  justify-content: center;
+  align-items: center;
+}
+
 

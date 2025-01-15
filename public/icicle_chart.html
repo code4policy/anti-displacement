@@ -17,37 +17,50 @@
                 const parents = [];
                 const values = [];
                 const descriptions = [];
+                const colors = []; // Array to store colors for each node
 
-                data.forEach(row => {
+                // Define a color palette
+                const colorPalette = [
+                    "#a64036", "#354e6b", "#4181a4","#f0c2a2","3D5C6F","E47159","F9AE78","313772","478ECC","75B5BC","326DB6"
+                ];
+
+                // Helper function to get a color from the palette
+                function getColor(index) {
+                    return colorPalette[index % colorPalette.length];
+                }
+
+                // Process the data
+                data.forEach((row, index) => {
                     const category1 = row['Category-1'];
                     const category2 = row['Category-2'];
                     const category3 = row['Category-3'];
                     const link = row['link'];
 
-                    function addNode(label, parent, value, description) {
+                    function addNode(label, parent, value, description, color) {
                         if (!labels.includes(label)) {
                             labels.push(label);
                             parents.push(parent || "");
                             values.push(value || 0);
                             descriptions.push(description || "");
+                            colors.push(color || getColor(labels.length)); // Assign color
                         }
                     }
 
-                    // Process up to Category-3
-                    addNode(category1, "", 0, "");
-                    if (category2) addNode(category2, category1, 0, "");
+                    // Add nodes and assign colors
+                    addNode(category1, "", 0, "", getColor(4));
+                    if (category2) addNode(category2, category1, 0, "", getColor(5));
                     if (category3) {
                         let desc = category3;
                         if (link) {
                             desc = `<a href="${link}" target="_blank">${category3}</a>`;
                         }
-                        addNode(category3, category2, 1, desc);
+                        addNode(category3, category2, 1, desc, getColor(6));
                     }
                 });
 
                 // Plot the Icicle chart
                 const plotData = [{
-                    type: "icicle",
+                    type: "treemap",
                     labels: labels,
                     parents: parents,
                     values: values,
@@ -55,11 +68,14 @@
                     text: descriptions,
                     hoverinfo: "text",
                     pathbar: { visible: true },
+                    marker: {
+                        colors: colors // Apply colors to the chart
+                    }
                 }];
 
                 const layout = {
                     margin: { t: 50, l: 25, r: 25, b: 25 },
-                    font: { size: 25 } // Adjust font size for visibility
+                    font: { size: 25 }, // Adjust font size for visibility
                 };
 
                 Plotly.newPlot("icicle-container", plotData, layout);
