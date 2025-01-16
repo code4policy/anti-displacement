@@ -298,6 +298,7 @@
       <button id="renterBtn" class="role-btn">I am a Renter</button>
       <button id="homeownerBtn" class="role-btn">I am a Homeowner</button>
     </div>
+    <div class="button-container"><button id="toggle-chart" class="vscode">To See Option graphically</button></div>
     
     <!-- Renter Section -->
     <div id="renterSection" class="content-section" style="display: none;">
@@ -342,7 +343,29 @@
 
   <script src="script.js"></script>
 
-  
+  <iframe id="chart-iframe" style="width: 100%; height: 700px; border: none; display: none;"></iframe>
+
+    <script>
+        let isIframeVisible = false; // Track the visibility state of the iframe
+
+        document.getElementById("toggle-chart").addEventListener("click", function () {
+            const iframe = document.getElementById("chart-iframe");
+
+            if (isIframeVisible) {
+                // Hide the iframe
+                iframe.style.display = "none";
+                isIframeVisible = false;
+            } else {
+                // Show the iframe and set the source if not already set
+                if (!iframe.src) {
+                    iframe.src = "icicle_chart.html"; // Path to your chart file
+                }
+                iframe.style.display = "block";
+                isIframeVisible = true;
+            }
+        });
+    </script>
+
 
     <img 
   id="chatIcon" 
