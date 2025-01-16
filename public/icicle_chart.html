@@ -34,7 +34,7 @@
                     const category1 = row['Category-1'];
                     const category2 = row['Category-2'];
                     const category3 = row['Category-3'];
-                    const link = row['link'];
+                    const category4 = row['category-4'];
 
                     function addNode(label, parent, value, description, color) {
                         if (!labels.includes(label)) {
@@ -51,8 +51,8 @@
                     if (category2) addNode(category2, category1, 0, "", getColor(5));
                     if (category3) {
                         let desc = category3;
-                        if (link) {
-                            desc = `<a href="${link}" target="_blank">${category3}</a>`;
+                        if (category4) {
+                            desc = `<a href="${category4}" target="_blank">${category3}</a>`;
                         }
                         addNode(category3, category2, 1, desc, getColor(6));
                     }

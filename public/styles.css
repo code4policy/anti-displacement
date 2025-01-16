@@ -233,7 +233,7 @@ a.hover-bold:hover {
 }
 
 
-.role-vis {
+.vscode {
   padding: 8px 16px;
   font-size: 18px;
   border: none;
@@ -244,12 +244,12 @@ a.hover-bold:hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.role-vis:hover {
+.vscode:hover {
   background-color: var(--hover-blue);
   box-shadow: 0 0 4px var(--hover-blue);
 }
 
-.role-vis:active {
+.vscode:active {
   transform: scale(0.96);
   background-color: var(--active-blue);
 }
