@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The 4Ps of Anti-Displacement</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-flextree@2.1.2/build/d3-flextree.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3-org-chart@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+    <style>
+        .chart-container {
+            height: 1000px;
+            background-color: white;
+        }
+        .control-panel {
+            margin: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .control-panel button {
+            margin: 5px;
+            padding: 10px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #003A8C;
+            color: white;
+        }
+        .control-panel button:hover {
+            background-color: #003A8C;
+        }
+
+
+        .control-panel input {
+            margin: 5px;
+            padding: 10px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        /* Custom styles for chart nodes */
+        .node-container {
+            font-family: 'Arial', sans-serif;
+            border-radius: 5px;
+        }
+
+        .node-header {
+            background-color: #5A94CA; /* Red for header background */
+            color: white; /* White text */
+            padding: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .node-body {
+            background-color: #f6f6f6; /* Light gray for body */
+            color: #333; /* Dark gray text */
+            padding: 10px;
+            font-size: 15px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .node-link {
+            color: #007bff; /* Blue link */
+            text-decoration: underline;
+        }
+
+        .node-link:hover {
+            color: #0056b3;
+        }
+        
+    /* Customize the expand/collapse button */
+    .d3-org-chart .node-button {
+        background-color: #5A94CA; /* Match the blue header color */
+        border: 2px solid #003A8C; /* Darker blue border for better visibility */
+        border-radius: 50%; /* Circular shape */
+        width: 35px; /* Increase button size */
+        height: 35px; /* Increase button size */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-weight: bold;
+        color: white; /* White text for contrast */
+        font-size: 50pt; /* Larger font for numbers */
+        transition: transform 0.2s ease;
+    }
+
+    /* Hover effect for expand/collapse button */
+    .d3-org-chart .node-button:hover {
+        background-color: #003A8C; /* Darker blue on hover */
+        transform: scale(1.2); /* Slight zoom effect */
+    }
+
+    /* Adjust arrow icons inside the buttons */
+    .d3-org-chart .node-button i {
+        font-size: 50pt; /* Increase arrow size */
+    }
+    </style>
+</head>
+<body>
+    <div class="control-panel">
+        <button onclick="fitChart()">Fit</button>
+        <button onclick="expandAllNodes()">Expand All</button>
+        <button onclick="collapseAllNodes()">Collapse All</button>
+        <button onclick="centerChart()">Center</button>
+        <button onclick="exportImage()">Export Image</button>
+        <button onclick="swapLayout()">Swap Layout</button>
+        <button onclick="setHorizontal()">Horizontal</button>
+        <button onclick="setCompact()">Compact</button>
+        <input id="search-level" type="text" placeholder="Search (e.g., Legal Clinics)">
+        <button onclick="fuzzySearch()">Search & Expand</button>
+    </div>
+
+    
+    <div class="chart-container"></div>
+    <script>
+        let chart;
+        let layoutIndex = 0; // For swapping layouts
+
+        // Load the JSON data
+        fetch('transformed_data.json')
+            .then(response => response.json())
+            .then(data => {
+                // Transform data for d3-org-chart
+                const transformedData = [];
+
+                // Add the root node
+                transformedData.push({
+                    id: "root",
+                    parentId: null,
+                    name: "The 4Ps of Anti-Displacement",
+                    positionName: "",
+                    description: "A high-level framework to prevent displacement.",
+                    link: null
+                });
+
+                // Add Category-1 nodes and their children
+                data.forEach(item => {
+                    // Add Category-1 as a child of the root
+                    if (!transformedData.some(d => d.id === item["Category-1"])) {
+                        transformedData.push({
+                            id: item["Category-1"],
+                            parentId: "root",
+                            name: item["Category-1"],
+                            positionName: "",
+                            description: "",
+                            link: null
+                        });
+                    }
+
+                    // Add Category-2 as a child of Category-1
+                    const category2Id = `${item["Category-1"]}_${item["Category-2"]}`;
+                    if (!transformedData.some(d => d.id === category2Id)) {
+                        transformedData.push({
+                            id: category2Id,
+                            parentId: item["Category-1"],
+                            name: item["Category-2"],
+                            positionName: "",
+                            description: "",
+                            link: null
+                        });
+                    }
+
+                    // Add Category-3 as a child of Category-2
+                    transformedData.push({
+                        id: `${category2Id}_${item["Category-3"]}`,
+                        parentId: category2Id,
+                        name: item["Category-3"],
+                        positionName: item["Category-2"],
+                        description: item["Category-4"],
+                        link: item["Link"]
+                    });
+                });
+
+                // Prepare the search index with Fuse.js
+                fuse = new Fuse(transformedData, {
+                    keys: ["name", "positionName", "description"], // Searchable fields
+                    threshold: 0.4, // Fuzzy matching sensitivity
+                });
+
+                // Initialize the chart
+                chart = new d3.OrgChart()
+                    .container('.chart-container')
+                    .data(transformedData)
+                    .nodeWidth(d => 250)
+                    .initialZoom(0.7)
+                    .nodeHeight(d => 175)
+                    .childrenMargin(d => 40)
+                    .compactMarginBetween(d => 15)
+                    .compactMarginPair(d => 80)
+                    .nodeContent((d, i, arr, state) => `
+                        <div class="node-container">
+                            <div class="node-header">${d.data.name}</div>
+                            <div class="node-body">
+                                <p>${d.data.description ? d.data.description : ''}</p>
+                                ${
+                                    d.data.link
+                                        ? `<p><a class="node-link" href="${d.data.link}" target="_blank">Learn more</a></p>`
+                                        : ''
+                                }
+                            </div>
+                        </div>
+                    `)
+                    .render();
+            })
+            .catch(error => console.error('Error loading JSON data:', error));
+
+        // Button actions
+        function fitChart() {
+            if (chart) chart.fit();
+        }
+
+        function expandAllNodes() {
+            if (chart) chart.expandAll();
+        }
+
+        function collapseAllNodes() {
+            if (chart) chart.collapseAll();
+        }
+
+        function centerChart() {
+            if (chart) chart.setCentered('root').render();
+        }
+
+        function exportImage() {
+            if (chart) chart.exportImg({ full: true });
+        }
+
+        function swapLayout() {
+            if (chart) {
+                const layouts = ['left', 'right', 'top', 'bottom'];
+                chart.layout(layouts[layoutIndex % layouts.length]).render();
+                layoutIndex++;
+            }
+        }
+
+        function setHorizontal() {
+            if (chart) chart.compact(false).render().fit();
+        }
+
+        function setCompact() {
+            if (chart) chart.compact(true).render().fit();
+        }
+
+        // Fuzzy Search and Expand Function
+        function fuzzySearch() {
+            const query = document.getElementById('search-level').value.trim();
+            if (!query) {
+                alert("Please enter a search term.");
+                return;
+            }
+
+            // Perform the fuzzy search
+            const results = fuse.search(query);
+            if (results.length === 0) {
+                alert("No matching node found.");
+                return;
+            }
+
+            // Get the best match and expand the chart to focus on it
+            const bestMatch = results[0].item;
+            chart.setExpanded(bestMatch.id).render().fit();
+            chart.setCentered(bestMatch.id).render();
+        }
+    </script>
+</body>
+</html>

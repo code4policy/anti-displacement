@@ -158,3 +158,8 @@ homeownerBtn.addEventListener('click', () => {
     populateAccordion(homeownerSection.querySelector('.accordion'), homeownerData);
   }
 });
+
+function redirectToPage() {
+    // Redirects to the target page
+    window.location.href = '4p-pages/4-p.html';
+  }
