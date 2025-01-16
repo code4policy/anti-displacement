@@ -1,0 +1,359 @@
+:root {
+    --primary-color: #004080;
+    --secondary-color: #007F5F;
+    --background-color: #F0F0F0;
+    --text-color: #333;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background-color: white;
+    line-height: 1.6;
+}
+
+h1, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 2rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding: 4rem 2rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.pexels.com/photos/4093051/pexels-photo-4093051.jpeg');
+    background-size: 100% auto;
+    background-position: center;
+    color: white;
+    min-height: 80vh;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+    padding-left: 2rem;
+}
+
+.video-container {
+    position: relative;
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.emphasize {
+    font-size: 1.2em;
+    font-weight: 900;
+    color: white;
+}
+
+.hero p {
+    font-size: 1.2rem;
+}
+
+.video-container {
+    flex: 1;
+    max-width: 50%;
+}
+
+.video-thumbnail {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    gap: 0.5rem;
+}
+
+.play-icon {
+    font-size: 2.5rem;
+}
+
+.play-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.data-section {
+    padding: 4rem 2rem;
+    background-color: var(--background-color);
+}
+
+.chart-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.chart {
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.chart h3 {
+    margin: 0 0 1rem 0;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.chart svg {
+    width: 100%;
+    height: 300px;
+}
+
+.bar-pre {
+    fill: #1f77b4;
+}
+
+.bar-post {
+    fill: #2ca02c;
+}
+
+.axis path,
+.axis line {
+    stroke: #ccc;
+}
+
+.axis text {
+    fill: #666;
+    font-size: 0.8rem;
+}
+
+.tooltip {
+    position: absolute;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    border-radius: 4px;
+    pointer-events: none;
+    font-size: 0.9rem;
+}
+
+.case-studies {
+    padding: 4rem 2rem;
+    overflow: hidden;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+.carousel {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 1rem 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    flex: 0 0 300px;
+    height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: start;
+    background-size: cover;
+    background-position: center;
+}
+
+.card-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    color: white;
+}
+
+.card h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+.card .btn {
+    display: block;
+    margin: 1rem auto 0;
+    width: fit-content;
+}
+
+.card p {
+    margin: 0 0 1.5rem 0;
+    line-height: 1.4;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.8);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s;
+}
+
+.carousel-arrow:hover {
+    background: white;
+}
+
+.carousel-arrow.prev {
+    left: -50px;
+}
+
+.carousel-arrow.next {
+    right: -50px;
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 0 0 250px;
+        height: 350px;
+    }
+    
+    .carousel-arrow.prev {
+        left: -20px;
+    }
+    
+    .carousel-arrow.next {
+        right: -20px;
+    }
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 2rem;
+    background-color: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 1rem;
+    min-width: 120px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 2rem 1rem;
+    }
+    
+    .hero-content,
+    .video-container {
+        max-width: 100%;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
