@@ -322,41 +322,47 @@
   </div>
 </div>
 
-<div>
-    <div style="text-align: center;">
-        <a href="our-team/index.html" class="meet-the-team">Meet the Team</a>
-    </div> 
-    <p>
-    <div style="text-align: center;">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScLg2WIugEwJsSgpgXOoFeRayPjxyJKsFtQs3ZR_WB-QgP8uw/viewform" class="feedback-form">Questions or Comments</a>
-    </div>
-  </p>
-</div>
 
   <script src="script.js"></script>
 
-  <iframe id="chart-iframe" style="width: 100%; height: 700px; border: none; display: none;"></iframe>
-
-    <script>
-        let isIframeVisible = false; // Track the visibility state of the iframe
-
-        document.getElementById("toggle-chart").addEventListener("click", function () {
-            const iframe = document.getElementById("chart-iframe");
-
-            if (isIframeVisible) {
-                // Hide the iframe
-                iframe.style.display = "none";
-                isIframeVisible = false;
-            } else {
-                // Show the iframe and set the source if not already set
-                if (!iframe.src) {
-                    iframe.src = "icicle_chart.html"; // Path to your chart file
-                }
-                iframe.style.display = "block";
-                isIframeVisible = true;
-            }
-        });
-    </script>
+  <footer class="ft">
+    <div class="ft-c ft-ite">
+      <nav role="navigation" aria-labelledby="block-footermenu-menu" id="block-footermenu" data-block-plugin-id="menu_block:menu-footer-menu">
+          
+  <div class="visually-hidden" id="block-footermenu-menu">Footer menu</div>
+  
+  
+  
+      
+                          <ul class="ft-ll ft-ite-links">
+                          <li class="ft-ll-i ft-ll-a">
+              <a href="our-team/index.html" data-drupal-link-system-path="node/31526">Meet the Team</a>
+                          </li>
+                  <li class="ft-ll-i ft-ll-a">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLScLg2WIugEwJsSgpgXOoFeRayPjxyJKsFtQs3ZR_WB-QgP8uw/viewform" data-drupal-link-system-path="node/1806">Questions or Comments</a>
+                          </li>
+                  <li class="ft-ll-i ft-ll-a">
+              <a href="https://www.boston.gov/career-center">Jobs</a>
+                          </li>
+                  <li class="ft-ll-i ft-ll-a">
+              <a href="https://bostonma.govqa.us/WEBAPP/_rs/(S(den310hnrpqz2rzh5lgbgsby))/SupportHome.aspx" target="_blank">Public records</a>
+                          </li>
+                  <li class="ft-ll-i ft-ll-a">
+              <a href="https://www.boston.gov/departments/language-and-communications-access/notice-accommodations">Language and Disability Access</a>
+                          </li>
+              </ul>
+  
+  </nav>
+  
+      <ul class="ft-ll ft-ite-311">
+        <li class="ft-ll-i"><a href="http://www.cityofboston.gov/311/" class="ft-ll-a lnk--yellow" target="_blank">
+            <span class="ft-ll-311">BOS:311</span>
+            <span class="tablet--hidden"> - </span>Report an issue
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
 
 
     <img 
