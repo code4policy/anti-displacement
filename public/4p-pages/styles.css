@@ -244,9 +244,9 @@ a.hover-bold:hover {
 }
 
 #city-strategy h2 {
-  font-size: 50px;
-  font-weight: bold;
-  color: var(--primary-blue);
+  font-size: 61px;
+  font-weight: 700;
+  color: #091f2f;
   margin-bottom: 20px;
   text-align: left; /* Align title to the left */
   font-family: 'Montserrat', sans-serif;
@@ -267,12 +267,13 @@ a.hover-bold:hover {
   margin-bottom: 20px;
   font-family: Lora, serif;
   font-size: 18px;
+  color: #091f2f;
 }
 
 .strategy-text ul li {
   font-size: 20px;
   line-height: 1.8;
-  color: var(--text-dark);
+  color: #091f2f;
   margin: 10px 0;
   padding-left: 25px;
   position: relative;
@@ -280,7 +281,7 @@ a.hover-bold:hover {
 
 .strategy-text ul li::before {
   content: '•';
-  color: var(--primary-blue);
+  color: #091f2f;
   font-size: 20px;
   position: absolute;
   left: 0;
@@ -300,30 +301,6 @@ a.hover-bold:hover {
   height: auto;
   border-radius: 8px;
   border: 1px solid var(--border-blue);
-}
-
-.report-links {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.image-link {
-  text-align: center;
-  margin: 10px;
-  flex: 0 1 45%;
-}
-
-.image-link img {
-  width: 150px;
-  height: auto;
-  object-fit: cover;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-bottom: 10px;
 }
 
 .meet-the-team {
