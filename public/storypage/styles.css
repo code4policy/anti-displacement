@@ -20,16 +20,15 @@ h1, h3 {
     color: var(--primary-color);
 }
 
-h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    color: var(--primary-color);
-    font-size: 2.5rem;
+.section-header {
     text-align: center;
-    margin: 2rem 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    font-size: 40px;
+    font-family: 'Montserrat', sans-serif;
+    color: #091f2f;
+    text-transform: uppercase;
+    font-weight: 700;
 }
-
 nav {
     padding: 1rem 2rem;
     position: sticky;
