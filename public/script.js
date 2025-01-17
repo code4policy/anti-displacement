@@ -163,3 +163,7 @@ function redirectToPage() {
     // Redirects to the target page
     window.location.href = '4p-pages/4-p.html';
   }
+
+  function redirectToSuccessPage() {
+    window.location.href = 'storypage/index.html';
+}
