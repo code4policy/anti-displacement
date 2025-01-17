@@ -202,7 +202,7 @@ a.hover-bold:hover {
 .contact-info {
     background-color: #091f2f;
     color: white;
-    padding: 40px;
+    padding: 30px;
 }
 
 .info-container {
@@ -253,7 +253,7 @@ a {
 
 .section-header {
   text-align: center;
-  margin: 20px 0;
+  margin-top: 30px;
   font-size: 40px;
   font-family: 'Montserrat', sans-serif;
   color: #091f2f;
@@ -282,18 +282,6 @@ a {
   font-size: 24px;
   font-style: italic; /* Increase the font size for the paragraph */
   margin-bottom: 10px; /* Add some spacing below the paragraph */
-}
-
-ul {
-  list-style-type: disc;
-  margin: 10px 0;
-  padding-left: 20px;
-  font-size: 20px; /* Increase the font size for the list items */
-}
-
-ul li {
-  font-weight: bold;
-  margin-bottom: 5px !important;
 }
 
 .report-links {
