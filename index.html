@@ -3,8 +3,39 @@
   <head>
     <meta http-equiv="refresh" content="0; url=public/index.html">
     <title>Redirecting...</title>
+    <style>
+.disclaimer-banner {
+    background-color: rgba(220, 53, 69, 0.9);
+    border-bottom: 3px solid #DEE2E6;
+    padding: 12px 24px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: 10;
+    z-index: 10;
+    opacity: .8;
+}
+
+.disclaimer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
+    font-size: 16px;
+}
+
+.disclaimer-emphasis {
+    color: white;
+    font-weight: bold;
+}
+</style>
   </head>
   <body>
+     <div class="disclaimer-banner">
+        <div class="disclaimer-content">
+            <span class="disclaimer-emphasis">Student Project Notice:</span>
+            This is not an official City of Boston website. This is an academic project created by Harvard Kennedy School students.
+        </div>
+    </div>
     <p>Redirecting to the chatbot...</p>
     <a href="public/index.html">Click here if not redirected</a>
   </body>
