@@ -28,8 +28,6 @@ This folder contains all the publicly accessible assets and files.
 - **ai_icon_2.png**: Another icon image file.
 - **flow-chart-header.png**: An image file used as a header for flowcharts.
 - **foundation-report-cover.jpg**: Image file for the foundation report cover.
-- **gtag.js**: Google Analytics tracking script.
-- **gtm.js**: Google Tag Manager script.
 - **index.html**: The main HTML file for the public directory.
 - **script.js**: Main JavaScript file for the public directory.
 - **styles.css**: Main CSS file for the public directory.
@@ -42,8 +40,6 @@ This folder contains all the publicly accessible assets and files.
 - **4-p.html**: An HTML file explaining the 4P framework.
 - **4Ps-image.png**: An image related to the 4P framework.
 - **Renters_and_Homeowners_Hierarchy_Table.csv**: A CSV file containing data for analysis.
-- **gtag.js**: Google Analytics tracking script specific to the 4P pages.
-- **gtm.js**: Google Tag Manager script specific to the 4P pages.
 - **icicle_chart.html**: An HTML file for displaying an icicle chart.
 - **styles.css**: CSS file for styling the 4P pages.
 - **transformed_data.json**: JSON file containing transformed data for visualization.
